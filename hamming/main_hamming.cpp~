@@ -1,0 +1,99 @@
+#include "lshhamming.h"
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+const int feature_dim = 4096;
+const int num_hash_vec = 8;
+const int len_hash_vec = 15;
+
+int main()
+{
+  LSH_Hamming hamming(feature_dim, num_hash_vec, len_hash_vec);
+  vector<int*> train_data;
+  vector<int*> val_data;
+  
+  //ifstream file("/home/xt/tong/mopsi/feature/imagenet_20_feature.txt");
+  ifstream val_file("/home/xt/tong/mopsi/feature/test.txt");
+  ifstream train_file("/home/xt/tong/mopsi/feature/test_feature.txt");
+  string line;
+
+  while(train_file.good()){
+    double *feature = new double[feature_dim];
+    int index = 0;
+
+    getline(train_file, line);
+    if(line.length() < feature_dim) break;
+    istringstream iss(line);
+
+    while(iss.good()){
+      double value;
+      iss >> value;
+      feature[index++] = value;
+    }
+
+    int *bin_feature = new int[feature_dim];
+    hamming.calBinaryFeature(feature, bin_feature);
+    train_data.push_back(bin_feature);
+    delete [] feature;
+  }
+
+  cout << "The number of features: " << train_data.size() << endl;
+
+  for(int n = 0; n < train_data.size(); n++)
+    hamming.updateHashMap(train_data[n], n);
+ 
+  double *val_feature = new double[feature_dim];
+
+  while(val_file.good()){
+    int index = 0;
+
+    getline(val_file, line);
+    if(line.length() < feature_dim) break;
+    istringstream iss(line);
+
+    while(iss.good()){
+      double value;
+      iss >> value;
+      val_feature[index++] = value;
+    }
+    cout << index << endl;
+  }
+
+  int* val_bin = new int[feature_dim];
+  hamming.calBinaryFeature(val_feature, val_bin);
+  vector<int> result = hamming.searchInTable(val_bin);
+
+  cout << result.size() << endl;
+
+  vector<pair<int,int>> hamming_result;
+
+  for(int m = 0; m < result.size(); m++) {
+    int hamming_dis = hamming.calHammingDistance(val_bin, train_data[result[m]], feature_dim);
+    if(hamming_dis < 1300) hamming_result.push_back(make_pair(result[m], hamming_dis));
+  }
+
+/*
+  for(int m = 0; m < train_data.size(); m++) {
+    double hamming_dis = hamming.calHammingDistance(val_bin, train_data[m], feature_dim);
+    hamming_result.push_back(make_pair(m, hamming_dis));
+  }*/
+
+
+  auto cmp = [](pair<int, int> const &a, pair<int, int> const &b)
+  {  
+    return a.second < b.second;
+  };
+
+  sort(hamming_result.begin(), hamming_result.end(), cmp);
+
+  for(int m = 0; m < hamming_result.size(); m++)
+  //for(int m = 0; m < 20; m++)
+    cout << hamming_result[m].first << "   "  << hamming_result[m].second << endl;  
+
+  return 0; 
+}
+

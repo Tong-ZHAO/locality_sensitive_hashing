@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/dci/lshdci.cpp
+lshdci.h
+/home/xt/tong/mopsi/locality_sensitive_hashing/dci/lshdci.h
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/dci/lshdci.h
+random
+-
+math.h
+-
+iostream
+-
+vector
+-
+functional
+-
+algorithm
+-
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/dci/main_dci.cpp
+lshdci.h
+/home/xt/tong/mopsi/locality_sensitive_hashing/dci/lshdci.h
+iostream
+-
+sstream
+-
+fstream
+-
+string
+-
+time.h
+-
+

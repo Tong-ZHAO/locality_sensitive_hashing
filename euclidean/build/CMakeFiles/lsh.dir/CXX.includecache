@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/euclidean/lsheuclidean.cpp
+lsheuclidean.h
+/home/xt/tong/mopsi/locality_sensitive_hashing/euclidean/lsheuclidean.h
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/euclidean/lsheuclidean.h
+random
+-
+unordered_map
+-
+math.h
+-
+iostream
+-
+fstream
+-
+vector
+-
+string
+-
+functional
+-
+sstream
+-
+algorithm
+-
+
+/home/xt/tong/mopsi/locality_sensitive_hashing/euclidean/main_euclidean.cpp
+lsheuclidean.h
+/home/xt/tong/mopsi/locality_sensitive_hashing/euclidean/lsheuclidean.h
+iostream
+-
+sstream
+-
+fstream
+-
+string
+-
+

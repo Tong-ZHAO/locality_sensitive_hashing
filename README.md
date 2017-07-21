@@ -1,1 +1,4 @@
-# locality_sensitive_hashing
+# Locality Sensitive Hashing (LSH)
+
+> The course project of MOPSI
+

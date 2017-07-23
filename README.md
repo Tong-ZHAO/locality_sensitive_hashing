@@ -1,6 +1,6 @@
-# Locality Sensitive Hashing (LSH) and Dynamic Continuous Indexing (DCI)
+# Locality Sensitive Hashing & Dynamic Continuous Indexing
 
-The generalization of cameras and the increase of storage capacities make data analysis more and more important. Given an image, we need an efficient algorithm to search similar images in a huge dataset. The principle idea of this project is to do quick research in a huge image dataset with help of convolutional neural network(CNN) descriptor. To solve this problem, K-nearest neighbour algorithm (KNN) is widely used. In this project, LSH and DCI are implemented and tested.
+The generalization of cameras and the increase of storage capacities make data analysis more and more important. Given an image, we need an efficient algorithm to search similar images in a huge dataset. The principle idea of this project is to do quick research in a huge image dataset with help of convolutional neural network(CNN) descriptor. To solve this problem, K-nearest neighbour algorithm (KNN) is widely used. In this project, Locality Sensitive Hashing(LSH) and Dynamic Continuous Indexing(DCI) are implemented and tested.
 
 ## Requirement
 
@@ -16,7 +16,9 @@ The generalization of cameras and the increase of storage capacities make data a
 
 ## Run
 
-`sh run.sh`
+```
+sh run.sh
+```
 
 
 
